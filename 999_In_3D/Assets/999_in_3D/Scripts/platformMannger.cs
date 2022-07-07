@@ -15,14 +15,14 @@ public class platformMannger : MonoBehaviour
         {
             if(i == 0)
             {
-                Instantiate(_platformPrefabs[i],new Vector3(0, 0, i * 12),Quaternion.Euler(0,0,0));
-                z_Offset += 10;
+                Instantiate(_platformPrefabs[i],new Vector3(0, 0, i * 5),Quaternion.Euler(0,0,0));
+                z_Offset += 5;
             }
             else
             {
                 
-                Instantiate(_platformPrefabs[Random.Range(0,_platformPrefabs.Length )],new Vector3(0, 0, i * 10),Quaternion.Euler(0,0,0));
-                z_Offset += 10;
+                Instantiate(_platformPrefabs[Random.Range(0,_platformPrefabs.Length )],new Vector3(0, 0, i * 5),Quaternion.Euler(0,0,0));
+                z_Offset += 5;
             }
         }
     }
@@ -31,7 +31,7 @@ public class platformMannger : MonoBehaviour
     {
         // reponsible for reposition next z offset
         platform.transform.position = new Vector3 (0, 0, z_Offset);
-        z_Offset += 10;
+        z_Offset += 5;
         //Debug.Log("New location is assinged  " + z_Offset);
     }
 }
