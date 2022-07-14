@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/999_in_3D/Scenes/movements_test.unity
+- path: Assets/999_in_3D/Scenes/core_mechannism.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
