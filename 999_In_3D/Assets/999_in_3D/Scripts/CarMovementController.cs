@@ -5,7 +5,7 @@ using System;
 
 public class CarMovementController : MonoBehaviour
 {
-    [SerializeField] private float _speed = 0.5f;
+    [SerializeField] private float _speed = 1f, _boostDelta = 0f, _normalDelta = 0.2f;
     public float pushDelta = 0.1f;
     private float _myTime = 0.0f;
     private float _nextPush = 0.5f;
@@ -25,7 +25,7 @@ public class CarMovementController : MonoBehaviour
         if( _myTime > _nextPush)
         {
             _nextPush = _myTime + pushDelta;
-            transform.position += Vector3.forward;
+            transform.position += (Vector3.forward * _speed);
 
             _nextPush = _nextPush - _myTime;
             _myTime = 0f;
@@ -34,17 +34,25 @@ public class CarMovementController : MonoBehaviour
 
     void pcInputs()
     {
-        if(Input.GetKey("space"))   // Boost
+        if(Input.GetKeyDown("space"))   // Boost
         {
-            transform.position += Vector3.forward;
+            Debug.Log("space press");
+            // transform.position += (Vector3.forward * Time.deltaTime * _speed * _boostDelta);
+            pushDelta = _boostDelta;
+        }
+        if(Input.GetKeyUp("space"))
+        {
+            pushDelta = _normalDelta;
         }
         if(Input.GetKeyDown("a"))       // Left
         {
-            transform.position += Vector3.left;
+            Debug.Log("A");
+            transform.position += Vector3.left*3;
         }
-        if(Input.GetKeyDown("d"))       // Right
+        if(Input.GetKeyDown(KeyCode.D))       // Right
         {
-            transform.position += Vector3.right;
+            Debug.Log("press D");
+            transform.position += Vector3.right*3;
         }
     }
 
